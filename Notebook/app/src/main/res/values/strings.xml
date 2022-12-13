@@ -1,3 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Notebook</string>
+    <string name="testing_title_note">Book Review : The Design of Everyday Things by Don Norman</string>
+    <string name="testing_body_note">The Design of Everyday Things is required reading for anyone who is interested in the user experience. I personally like to reread it every year or two. Norman is aware of the durability of his work and the applicability of his principles to multiple disciplines. If you know the basics of design better than anyone else, you can apply them flawlessly anywhere.</string>
+    <string name="alert_dialog_positive_button">Accept</string>
+    <string name="alert_dialog_negative_button">Cancel</string>
+    <string name="exit_message">Do you want to exit without saving changes?</string>
+    <string name="save_message">Do you want to save the note?</string>
+    <string name="login_error_server">Error reading data</string>
+    <string name="save_error_note">Failed to save data</string>
+    <string name="alert_required">Required</string>
+    <string name="main_save_success">Note Created.</string>
+    <string name="main_search_success">Note Found…</string>
+    <string name="main_update_success">Updated Note</string>
+    <string name="main_delete_success">Deleted note</string>
+    <string name="delete_message">Are you sure you want to delete the note?</string>
+    <string name="delete_error_note">Error deleting note</string>
+    <string name="main_found_success">Notes found</string>
+    <string name="main_no_search_success">Note not found…</string>
+    <string name="alert_save">Saving the dates…</string>
+    <string name="alert_not_exist_notes">There are no notes…</string>
+    <string name="alert_loading_notes">Loading notes…</string>
+
+    <string name="developer_name">Jonatan Morales</string>
+    <string name="developer_position">Android Developer</string>
+    <string name="developer_description">I really like mobile technologies such as Android. I really like developing applications among other tasks such as AI.</string>
+
 </resources>

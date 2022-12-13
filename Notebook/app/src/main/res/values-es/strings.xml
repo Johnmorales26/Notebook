@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Notebook</string>
+    <string name="testing_title_note">Book Review : The Design of Everyday Things by Don Norman</string>
+    <string name="testing_body_note">The Design of Everyday Things is required reading for anyone who is interested in the user experience. I personally like to reread it every year or two. Norman is aware of the durability of his work and the applicability of his principles to multiple disciplines. If you know the basics of design better than anyone else, you can apply them flawlessly anywhere.</string>
+    <string name="alert_dialog_positive_button">Aceptar</string>
+    <string name="alert_dialog_negative_button">Cancelar</string>
+    <string name="exit_message">¿Desea salir sin guardar cambios?</string>
+    <string name="save_message">¿Desea guardar la nota?</string>
+    <string name="login_error_server">Error al leer datos</string>
+    <string name="save_error_note">Error al guardar datos</string>
+    <string name="alert_required">Requerido</string>
+    <string name="main_save_success">Nota Creada.</string>
+    <string name="main_search_success">Nota Encontrada…</string>
+    <string name="main_update_success">Nota Actualizada</string>
+    <string name="main_delete_success">Nota Eliminada</string>
+    <string name="delete_message">¿Estas seguro deseas eliminar la nota?</string>
+    <string name="delete_error_note">Error al eliminar nota</string>
+    <string name="main_found_success">Notes found</string>
+    <string name="main_no_search_success">Nota no encontrada…</string>
+    <string name="alert_save">Guardando los datos…</string>
+    <string name="alert_not_exist_notes">No existen notas…</string>
+    <string name="alert_loading_notes">Cargando las notas…</string>
+
+    <string name="developer_name">Jonatan Morales</string>
+    <string name="developer_position">Android Developer</string>
+    <string name="developer_description">Me gustan mucho las tecnologías móviles como Android. Me gusta mucho desarrollar aplicaciones entre otras tareas como la IA.</string>
+</resources>
