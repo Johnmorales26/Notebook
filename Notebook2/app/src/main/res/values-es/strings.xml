@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Notebook</string>
+
+    <string name="message_create_note">Creando la nota</string>
+    <string name="message_update_note">Editando la nota</string>
+    <string name="message_fill_fields">Rellena todos los campos</string>
+    <string name="message_note_not_found">No pude encontrar la nota.</string>
+    <string name="message_not_found">No tienes notas creadas para esta carpeta</string>
+    <string name="message_all_notes">Tome notas y acceda fácilmente a ellas en esta sección.</string>
+    <string name="message_folders">Cree nuevas carpetas y organice sus notas de manera más efectiva.</string>
+
+    <string name="tab_all_notes">Notas</string>
+    <string name="tab_folders">Carpetas</string>
+
+    <string name="add_new_note">Añade una nota</string>
+    <string name="save_note">Guardar</string>
+    <string name="all_notes">Notas</string>
+    <string name="created_by">Creada por</string>
+    <string name="last_modified">Ultima modificación</string>
+    <string name="tags">Tags</string>
+    <string name="folder">Carpeta</string>
+
+    <string name="label_select_folder">Seleccione una carpeta para guardar</string>
+    <string name="label_write_title">Escribe el título de la nota.</string>
+    <string name="label_write_content">Escribe el contenido de la nota.</string>
+    <string name="label_write_name_author">Escribe el nombre del autor.</string>
+
+    <string name="btn_skip_now">Saltar ahora</string>
+    <string name="btn_get_started">Empezar</string>
+</resources>

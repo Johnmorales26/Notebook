@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">Notebook</string>
+
+    <string name="message_create_note">Creating the note</string>
+    <string name="message_update_note">Editing the note</string>
+    <string name="message_fill_fields">Fill all the fields</string>
+    <string name="message_note_not_found">Couldn´t find the note</string>
+    <string name="message_not_found">You have no notes created for this folder</string>
+    <string name="message_all_notes">Take notes and easily access them in this section.</string>
+    <string name="message_folders">Create new folders and organize your notes more effectively.</string>
+
+    <string name="tab_all_notes">All Notes</string>
+    <string name="tab_folders">Folders</string>
+
+    <string name="add_new_note">Add new note</string>
+    <string name="save_note">Save note</string>
+    <string name="all_notes">All Notes</string>
+    <string name="created_by">Created by</string>
+    <string name="last_modified">Last Modified</string>
+    <string name="tags">Tags</string>
+    <string name="folder">Folder</string>
+
+    <string name="label_select_folder">Select a folder to save</string>
+    <string name="label_write_title">Write the title of the note</string>
+    <string name="label_write_content">Write the content of the note</string>
+    <string name="label_write_name_author">Write the name of the author</string>
+
+    <string name="btn_skip_now">Skip Now</string>
+    <string name="btn_get_started">Get Started</string>
+</resources>
