@@ -16,13 +16,15 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import androidx.preference.PreferenceManager
-import com.johndev.notebook.navigation.CreateScreen
-import com.johndev.notebook.navigation.DetailsNoteScreen
-import com.johndev.notebook.navigation.FilterScreen
-import com.johndev.notebook.navigation.HomeScreen
-import com.johndev.notebook.navigation.OnboargingScreen
+import com.johndev.notebook.data.ViewModels.getInstanceFoldersVM
 import com.johndev.notebook.navigation.Routes
+import com.johndev.notebook.ui.Onboarding.OnboargingScreen
+import com.johndev.notebook.ui.allNotesModule.FilterScreen
+import com.johndev.notebook.ui.screens.CreateScreen
+import com.johndev.notebook.ui.screens.DetailsNoteScreen
+import com.johndev.notebook.ui.screens.UpdateHomeModalBottomSheet
 import com.johndev.notebook.ui.theme.NotebookTheme
+
 
 class MainActivity : ComponentActivity() {
 
@@ -32,6 +34,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
+        getInstanceFoldersVM().checkFolders(applicationContext)
         setContent {
             NotebookTheme {
                 // A surface container using the 'background' color from the theme
@@ -42,7 +45,7 @@ class MainActivity : ComponentActivity() {
                     val navigationController = rememberNavController()
                     NavHost(
                         navController = navigationController,
-                        startDestination = startDestination(sharedPreferences)
+                        startDestination = startDestination(sharedPreferences),
                     ) {
                         composable(Routes.OnboardingScreen.route) {
                             OnboargingScreen(
@@ -51,11 +54,12 @@ class MainActivity : ComponentActivity() {
                             )
                         }
                         composable(Routes.HomeScreen.route) {
-                            HomeScreen(
-                                navigationController = navigationController
+                            UpdateHomeModalBottomSheet(
+                                navigationController = navigationController,
+                                sharedPreferences = sharedPreferences
                             )
                         }
-                        composable(Routes.CreateScreen.route) {
+                        composable(Routes.CreateNoteScreen.route) {
                             CreateScreen(
                                 navigationController = navigationController
                             )
@@ -87,7 +91,6 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
-
 
     private fun startDestination(sharedPreferences: SharedPreferences): String {
         return if (sharedPreferences.getBoolean("isFirstStart", true)) {

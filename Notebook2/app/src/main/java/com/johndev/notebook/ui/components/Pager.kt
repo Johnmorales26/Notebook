@@ -135,7 +135,7 @@ fun OnBoardingPager(
                             //fontFamily = Poppins,
                             fontSize = 17.sp,
                             textAlign = TextAlign.Center,
-                            fontWeight = FontWeight.ExtraLight
+                            //fontWeight = FontWeight.ExtraLight
                         )
 
                     }

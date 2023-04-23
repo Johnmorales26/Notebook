@@ -13,6 +13,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import com.johndev.notebook.R
+import com.johndev.notebook.data.Utils.isLightTheme
 import com.johndev.notebook.data.ViewModels.getInstanceFoldersVM
 import com.johndev.notebook.entities.FolderEntity
 import com.johndev.notebook.entities.NoteEntity
@@ -43,12 +45,10 @@ fun CardNote(noteEntity: NoteEntity, onNotePress: (Int) -> Unit) {
                 maxLines = 2,
                 overflow = TextOverflow.Ellipsis
             )
-            getInstanceFoldersVM().getFolderByName(noteEntity.folder)?.let {
-                Text(
-                    text = it.name,
-                    style = MaterialTheme.typography.caption
-                )
-            }
+            Text(
+                text = noteEntity.folder,
+                style = MaterialTheme.typography.caption
+            )
             Text(
                 text = noteEntity.content,
                 maxLines = 5,
@@ -74,8 +74,8 @@ fun CardFolders(folderEntity: FolderEntity, onPressFolder: (String) -> Unit) {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Image(
-                modifier = Modifier.size(56.dp),
-                painter = painterResource(id = folderEntity.icon),
+                modifier = Modifier.size(56.dp).padding(8.dp),
+                painter = painterResource(id = if (isLightTheme()) R.drawable.ic_folder else R.drawable.ic_folder_white),
                 contentDescription = null
             )
             Text(text = folderEntity.name)

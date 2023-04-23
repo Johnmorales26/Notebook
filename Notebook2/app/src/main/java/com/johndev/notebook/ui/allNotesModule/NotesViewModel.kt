@@ -9,26 +9,28 @@ import kotlinx.coroutines.launch
 
 class NotesViewModel : ViewModel() {
 
-    private val repository = NotesRepository()
+    private val notesRepository = NotesRepository()
 
-    var allNotes: Flow<List<NoteEntity>> = repository.getAllNotes()
+    val allNotes: Flow<List<NoteEntity>> = notesRepository.getAllNotes()
 
-    var allTags = repository.getAllTags
+    val allTags = notesRepository.getAllTags
 
-    fun findByName(title: String): Flow<List<NoteEntity>> = repository.findByName(title)
+    fun findByName(title: String): Flow<List<NoteEntity>> = notesRepository.findByName(title)
 
-    fun findById(idNote: Int): Flow<NoteEntity?> = repository.findById(idNote)
+    fun findById(idNote: Int): Flow<NoteEntity?> = notesRepository.findById(idNote)
 
-    fun findByFolder(folder: String): Flow<List<NoteEntity>> = repository.findByFolder(folder)
+    fun findByFolder(folder: String): Flow<List<NoteEntity>> = notesRepository.findByFolder(folder)
 
-    fun insert(noteEntity: NoteEntity) = viewModelScope.launch(Dispatchers.IO) { repository.insert(noteEntity) }
+    fun insert(noteEntity: NoteEntity) = viewModelScope.launch(Dispatchers.IO) {
+        notesRepository.insert(noteEntity)
+    }
 
-    fun delete(noteEntity: NoteEntity) = viewModelScope.launch(Dispatchers.IO) { repository.delete(noteEntity) }
+    fun delete(noteEntity: NoteEntity) = viewModelScope.launch(Dispatchers.IO) {
+        notesRepository.delete(noteEntity)
+    }
 
-    fun update(note: NoteEntity) {
-        viewModelScope.launch {
-            repository.update(note)
-        }
+    fun update(note: NoteEntity) = viewModelScope.launch(Dispatchers.IO) {
+        notesRepository.update(note)
     }
 
 }

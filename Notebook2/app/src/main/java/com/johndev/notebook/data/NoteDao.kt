@@ -30,6 +30,6 @@ interface NoteDao {
     fun delete(noteEntity: NoteEntity)
 
     @Update
-    suspend fun update(noteEntity: NoteEntity)
+    fun update(noteEntity: NoteEntity)
 
 }

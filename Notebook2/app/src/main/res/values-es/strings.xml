@@ -9,23 +9,47 @@
     <string name="message_not_found">No tienes notas creadas para esta carpeta</string>
     <string name="message_all_notes">Tome notas y acceda fácilmente a ellas en esta sección.</string>
     <string name="message_folders">Cree nuevas carpetas y organice sus notas de manera más efectiva.</string>
+    <string name="message_create_folder">Por favor, ingresa el nombre de la carpeta que deseas crear:</string>
 
     <string name="tab_all_notes">Notas</string>
     <string name="tab_folders">Carpetas</string>
 
+    <string name="title_folder">Carpeta</string>
+    <string name="title_edit_note">Editar Nota</string>
+    <string name="title_create_note">Crear Nota</string>
+    <string name="title_create_folder">Crear Carpeta</string>
+
     <string name="add_new_note">Añade una nota</string>
+    <string name="add_new_folder">Añade una carpeta</string>
     <string name="save_note">Guardar</string>
-    <string name="all_notes">Notas</string>
     <string name="created_by">Creada por</string>
     <string name="last_modified">Ultima modificación</string>
     <string name="tags">Tags</string>
-    <string name="folder">Carpeta</string>
 
+    <string name="label_folder_name">Nombre de la carpeta</string>
     <string name="label_select_folder">Seleccione una carpeta para guardar</string>
     <string name="label_write_title">Escribe el título de la nota.</string>
     <string name="label_write_content">Escribe el contenido de la nota.</string>
     <string name="label_write_name_author">Escribe el nombre del autor.</string>
 
-    <string name="btn_skip_now">Saltar ahora</string>
+    <string name="btn_create">Crear</string>
+    <string name="btn_dismiss">Cerrar</string>
+    <string name="btn_continue">Continuar</string>
     <string name="btn_get_started">Empezar</string>
+    <string name="btn_skip_now">Saltar ahora</string>
+
+    <string name="default_folder_work">Trabajo</string>
+    <string name="default_folder_study">Estudio</string>
+    <string name="default_folder_recipes">Recetas</string>
+    <string name="default_folder_projects">Proyectos</string>
+    <string name="default_folder_personal">Personal</string>
+    <string name="default_folder_quick_notes">Notas Rapidas</string>
+
+    <string name="new_function_create_folders_v1100">Ahora podemos crear carpetas</string>
+    <string name="new_function_description_create_folders_v1100">Con la finalidad de brindarle al usuario una mayor facilidad para organizar sus notas de una mejor manera, hemos añadido la opción de crear, eliminar y actualizar carpetas.</string>
+
+    <string name="update_bugs">Corrección de bugs y mejoras de la estabilidad</string>
+    <string name="update_bugs_description">Si tienes alguna duda o consulta, contacta con nosotros sin compromiso via email o redes sociales.</string>
+    <string name="update_feedback">¿Tienes feedback o sugerencias?</string>
+    <string name="update_feedback_description">Recuerda que estamos a un toque para lo que necesites. Si tienes alguna duda o sugerencia puedes contactarnos via redes sociales o correo electrónico.</string>
 </resources>

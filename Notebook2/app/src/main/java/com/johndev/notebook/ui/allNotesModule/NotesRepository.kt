@@ -21,7 +21,7 @@ class NotesRepository {
 
     fun delete(note: NoteEntity) = dao.delete(note)
 
-    suspend fun update(note: NoteEntity) = dao.update(note)
+    fun update(note: NoteEntity) = dao.update(note)
 
     fun findByName(title: String) = dao.findByName(title)
 

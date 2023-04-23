@@ -8,23 +8,47 @@
     <string name="message_not_found">You have no notes created for this folder</string>
     <string name="message_all_notes">Take notes and easily access them in this section.</string>
     <string name="message_folders">Create new folders and organize your notes more effectively.</string>
+    <string name="message_create_folder">Please enter the name of the folder you want to create:</string>
 
     <string name="tab_all_notes">All Notes</string>
     <string name="tab_folders">Folders</string>
 
+    <string name="title_folder">Folder</string>
+    <string name="title_edit_note">Edit Note</string>
+    <string name="title_create_note">Create Note</string>
+    <string name="title_create_folder">Create Folder</string>
+
     <string name="add_new_note">Add new note</string>
+    <string name="add_new_folder">Add new folder</string>
     <string name="save_note">Save note</string>
-    <string name="all_notes">All Notes</string>
     <string name="created_by">Created by</string>
     <string name="last_modified">Last Modified</string>
     <string name="tags">Tags</string>
-    <string name="folder">Folder</string>
 
+    <string name="label_folder_name">Folder name</string>
     <string name="label_select_folder">Select a folder to save</string>
     <string name="label_write_title">Write the title of the note</string>
     <string name="label_write_content">Write the content of the note</string>
     <string name="label_write_name_author">Write the name of the author</string>
 
+    <string name="btn_create">Create</string>
+    <string name="btn_dismiss">Dismiss</string>
     <string name="btn_skip_now">Skip Now</string>
+    <string name="btn_continue">Continue</string>
     <string name="btn_get_started">Get Started</string>
+
+    <string name="default_folder_work">Work</string>
+    <string name="default_folder_study">Study</string>
+    <string name="default_folder_recipes">Recipes</string>
+    <string name="default_folder_projects">Projects</string>
+    <string name="default_folder_personal">Personal</string>
+    <string name="default_folder_quick_notes">Quick notes</string>
+
+    <string name="new_function_create_folders_v1100">Now we can create folders</string>
+    <string name="new_function_description_create_folders_v1100">In order to make it easier for the user to organize their notes in a better way, we have added the option to create, delete and update folders.</string>
+
+    <string name="update_bugs">Bug fixes and stability improvements</string>
+    <string name="update_bugs_description">If you have any questions or queries, contact us without obligation via email or social networks.</string>
+    <string name="update_feedback">Do you have feedback or suggestions?</string>
+    <string name="update_feedback_description">Remember that we are one touch away for whatever you need. If you have any questions or suggestions you can contact us via social networks or email.</string>
 </resources>

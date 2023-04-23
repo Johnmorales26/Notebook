@@ -1,10 +1,10 @@
 package com.johndev.notebook.data
 
+import android.content.Context
 import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.graphics.Color
 import com.johndev.notebook.R
 import com.johndev.notebook.entities.OnBoardingData
 import com.johndev.notebook.ui.theme.BackgroundDark
@@ -61,6 +61,13 @@ object Utils {
                 mainColor = PrimaryColor
             ),
         )
+    }
+
+    fun getVersionApp(context: Context): String {
+        val packageManager = context.packageManager
+        val packageName = context.packageName
+        val packageInfo = packageManager.getPackageInfo(packageName, 0)
+        return packageInfo.versionName
     }
 
 }

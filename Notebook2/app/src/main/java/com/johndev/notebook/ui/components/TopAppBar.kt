@@ -17,7 +17,7 @@ import com.johndev.notebook.data.Utils.getColorByTheme
 import com.johndev.notebook.navigation.Routes
 
 @Composable
-fun TopAppBarCustom(
+fun TopAppBarNotes(
     titleRes: Int,
     navIconRes: Int? = null,
     navigationController: NavHostController? = null,
@@ -35,7 +35,7 @@ fun TopAppBarCustom(
                 IconButton(onClick = {
                     navigationController?.let {
                         it.navigate(Routes.HomeScreen.route)
-                        it.clearBackStack(Routes.CreateScreen.route)
+                        it.clearBackStack(Routes.CreateNoteScreen.route)
                     }
                 }) {
                     Icon(painter = painterResource(id = navIconRes), contentDescription = null)
@@ -68,6 +68,32 @@ fun TopAppBarCustom(
                         painter = painterResource(id = R.drawable.ic_more_horiz),
                         contentDescription = null
                     )
+                }
+            }
+        }
+    )
+}
+
+@Composable
+fun TopAppBarFolders(
+    titleRes: Int,
+    navIconRes: Int? = null,
+    navigationController: NavHostController? = null,
+) {
+    TopAppBar(
+        elevation = 0.dp,
+        modifier = Modifier,
+        backgroundColor = getColorByTheme(),
+        title = { Text(text = stringResource(id = titleRes)) },
+        navigationIcon = {
+            if (navIconRes != null) {
+                IconButton(onClick = {
+                    navigationController?.let {
+                        it.navigate(Routes.HomeScreen.route)
+                        it.clearBackStack(Routes.CreateNoteScreen.route)
+                    }
+                }) {
+                    Icon(painter = painterResource(id = navIconRes), contentDescription = null)
                 }
             }
         }

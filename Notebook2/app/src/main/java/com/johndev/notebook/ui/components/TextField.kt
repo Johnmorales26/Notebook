@@ -2,13 +2,24 @@ package com.johndev.notebook.ui.components
 
 import android.os.Build
 import androidx.annotation.RequiresApi
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.slideInVertically
+import androidx.compose.animation.slideOutVertically
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material.*
 import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.unit.dp
 import com.johndev.notebook.data.Utils
 import com.johndev.notebook.data.Utils.getColorByTheme
 import com.johndev.notebook.entities.FolderEntity
@@ -23,10 +34,6 @@ private fun colorsTextField(visible: Boolean): TextFieldColors {
         unfocusedIndicatorColor = getColorByTheme(),
         focusedIndicatorColor = getColorByTheme(),
         focusedLabelColor = getColorByTheme(),
-        disabledLabelColor = getColorByTheme(),
-        disabledTextColor = getColorByTheme(),
-        disabledPlaceholderColor = getColorByTheme(),
-        disabledIndicatorColor = getColorByTheme(),
         unfocusedLabelColor = if (!visible) getColorByTheme() else Color.Gray
     )
 }
@@ -39,6 +46,7 @@ fun OutlinedTextFielCustom(
     modifier: Modifier,
     enabled: Boolean = true,
     entryText: String? = null,
+    isError: Boolean = false,
     onTextChange: (String) -> Unit,
 ) {
     var textState by remember { mutableStateOf(entryText ?: "") }
@@ -57,13 +65,25 @@ fun OutlinedTextFielCustom(
         modifier = modifier,
         textStyle = styleText,
         colors = colorsTextField(textState == ""),
-        enabled = enabled
+        enabled = enabled,
+        isError = isError
     )
+    AnimatedVisibility(
+        visible = isError,
+        enter = slideInVertically(),
+        exit = slideOutVertically()
+    ) {
+        Text(
+            text = "Enter the folder name",
+            modifier = Modifier.padding(top = 8.dp),
+            style = MaterialTheme.typography.caption,
+            color = MaterialTheme.colors.error
+        )
+    }
 }
 
-@OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun ActOutlinedTextField(
+fun SpinnerFolders(
     modifier: Modifier,
     textRes: String,
     listFoders: List<FolderEntity>,
@@ -72,38 +92,33 @@ fun ActOutlinedTextField(
     var selectedText by remember { mutableStateOf("") }
     var isExpanded by remember { mutableStateOf(false) }
 
-    ExposedDropdownMenuBox(expanded = isExpanded, onExpandedChange = {
-
-    }) {
-        OutlinedTextField(
-            modifier = modifier,
-            value = selectedText, onValueChange = {
-                isExpanded = true
-                selectedText = it
-                onSelectedFolder(selectedText)
-            },
+    Box(modifier = modifier.wrapContentSize(Alignment.Center)) {
+        OutlinedTextField(value = selectedText,
+            onValueChange = { selectedText = it },
+            enabled = false,
+            readOnly = true,
+            colors = colorsTextField(selectedText == ""),
             label = {
                 Text(
                     text = textRes,
                 )
             },
-            colors = colorsTextField(selectedText == "")
-        )
-        val filterInOptions =
-            listFoders.filter { it.name.contains(selectedText, ignoreCase = true) }
-        if (filterInOptions.isNotEmpty()) {
-            ExposedDropdownMenu(expanded = isExpanded, onDismissRequest = { isExpanded = false }) {
-                filterInOptions.forEach { selectionOption ->
-                    DropdownMenuItem(onClick = {
-                        selectedText = selectionOption.name
-                        isExpanded = false
-                        onSelectedFolder(selectedText)
-                    }) {
-                        Text(text = selectionOption.name)
-                    }
+            modifier = Modifier
+                .fillMaxWidth()
+                .clickable { isExpanded = true })
+        DropdownMenu(
+            expanded = isExpanded,
+            onDismissRequest = { isExpanded = false }
+        ) {
+            listFoders.forEach {
+                DropdownMenuItem(onClick = {
+                    isExpanded = false
+                    selectedText = it.name
+                    onSelectedFolder(selectedText)
+                }) {
+                    Text(text = it.name)
                 }
             }
         }
     }
-
 }

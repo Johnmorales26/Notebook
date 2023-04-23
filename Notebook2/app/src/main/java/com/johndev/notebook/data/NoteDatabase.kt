@@ -14,5 +14,6 @@ import com.johndev.notebook.entities.NoteEntity
 abstract class NoteDatabase : RoomDatabase() {
 
     abstract fun noteDao(): NoteDao
+    abstract fun folderDao(): FolderDao
 
 }
