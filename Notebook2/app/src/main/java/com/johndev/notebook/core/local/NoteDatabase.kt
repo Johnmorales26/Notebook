@@ -1,4 +1,4 @@
-package com.johndev.notebook.data
+package com.johndev.notebook.core.local
 
 import androidx.room.Database
 import androidx.room.RoomDatabase

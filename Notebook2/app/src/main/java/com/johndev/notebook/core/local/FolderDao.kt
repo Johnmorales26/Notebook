@@ -1,4 +1,4 @@
-package com.johndev.notebook.data
+package com.johndev.notebook.core.local
 
 import androidx.room.Dao
 import androidx.room.Delete

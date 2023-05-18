@@ -4,7 +4,6 @@ import android.content.SharedPreferences
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -25,8 +24,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.johndev.notebook.R
-import com.johndev.notebook.data.Utils
-import com.johndev.notebook.ui.screens.saveIsHidden
+import com.johndev.notebook.utils.UtilsNotebook
+import com.johndev.notebook.ui.homeModule.ui.HomeViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
@@ -35,8 +34,10 @@ import kotlinx.coroutines.launch
 fun ModalBottomSheet(
     scope: CoroutineScope,
     state: ModalBottomSheetState,
-    sharedPreferences: SharedPreferences
+    sharedPreferences: SharedPreferences,
+    homeViewModel: HomeViewModel
 ) {
+    val context = LocalContext.current
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -57,10 +58,10 @@ fun ModalBottomSheet(
                     shape = RoundedCornerShape(8.dp),
                     onClick = { }
                 ) {
-                    Text(text = "V${Utils.getVersionApp(LocalContext.current)}")
+                    Text(text = "V${UtilsNotebook.getVersionApp(LocalContext.current)}")
                 }
                 Text(
-                    text = "¡Novedades!",
+                    text = stringResource(R.string.modal_title_news),
                     style = MaterialTheme.typography.h5,
                     modifier = Modifier,
                     fontWeight = FontWeight.Bold
@@ -75,9 +76,10 @@ fun ModalBottomSheet(
                     shape = RoundedCornerShape(8.dp),
                     onClick = {
                         scope.launch { state.hide() }
-                        saveIsHidden(
+                        homeViewModel.saveIsHidden(
                             sharedPreferences = sharedPreferences,
-                            isHidden = 0
+                            isHidden = 0,
+                            context = context
                         )
                     }) {
                     Icon(
@@ -87,13 +89,20 @@ fun ModalBottomSheet(
                 }
             }
         }
-        Text(
-            text = stringResource(R.string.new_function_create_folders_v1100),
+        /*Text(
+            text = stringResource(R.string.new_function_modify_folders_v1200),
             style = MaterialTheme.typography.subtitle1,
             modifier = Modifier.padding(bottom = 16.dp),
             fontWeight = FontWeight.Bold
         )
-        Text(text = stringResource(R.string.new_function_description_create_folders_v1100))
+        Text(text = stringResource(R.string.new_function_description_modify_folders_v1200))
+        Text(
+            text = stringResource(R.string.new_function_delete_folders_v1200),
+            style = MaterialTheme.typography.subtitle1,
+            modifier = Modifier.padding(vertical = 16.dp),
+            fontWeight = FontWeight.Bold
+        )
+        Text(text = stringResource(R.string.new_function_description_delete_folders_v1200))*/
         Text(
             text = stringResource(R.string.update_bugs),
             style = MaterialTheme.typography.subtitle1,
@@ -115,9 +124,10 @@ fun ModalBottomSheet(
             modifier = Modifier.fillMaxWidth(),
             onClick = {
                 scope.launch { state.hide() }
-                saveIsHidden(
+                homeViewModel.saveIsHidden(
                     sharedPreferences = sharedPreferences,
-                    isHidden = 0
+                    isHidden = 0,
+                    context = context
                 )
             }) {
             Text(text = stringResource(R.string.btn_continue))

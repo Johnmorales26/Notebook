@@ -14,8 +14,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.johndev.notebook.R
-import com.johndev.notebook.data.Utils.isLightTheme
-import com.johndev.notebook.data.ViewModels.getInstanceFoldersVM
+import com.johndev.notebook.utils.UtilsNotebook.isLightTheme
 import com.johndev.notebook.entities.FolderEntity
 import com.johndev.notebook.entities.NoteEntity
 import com.johndev.notebook.navigation.Routes
@@ -93,7 +92,7 @@ fun NotesCards(notesListState: List<NoteEntity>, navigationController: NavHostCo
     ) {
         items(notesListState.size) { index ->
             CardNote(notesListState[index]) {
-                navigationController.navigate(Routes.DetailsNoteScreen.createRoute(it))
+                navigationController.navigate(Routes.EditNoteScreen.createRoute(it))
             }
         }
     }

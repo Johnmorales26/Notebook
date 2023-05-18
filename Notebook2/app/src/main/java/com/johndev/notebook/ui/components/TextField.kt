@@ -7,21 +7,27 @@ import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutVertically
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusDirection
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardCapitalization
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
-import com.johndev.notebook.data.Utils
-import com.johndev.notebook.data.Utils.getColorByTheme
+import com.johndev.notebook.utils.UtilsNotebook
+import com.johndev.notebook.utils.UtilsNotebook.getColorByTheme
 import com.johndev.notebook.entities.FolderEntity
 
 
@@ -38,23 +44,27 @@ private fun colorsTextField(visible: Boolean): TextFieldColors {
     )
 }
 
+@OptIn(ExperimentalComposeUiApi::class)
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun OutlinedTextFielCustom(
+    text: String,
     textRes: String,
     styleText: TextStyle,
     modifier: Modifier,
     enabled: Boolean = true,
     entryText: String? = null,
     isError: Boolean = false,
+    isSingleLine: Boolean = true,
+    keyboardOptions: KeyboardOptions? = null,
     onTextChange: (String) -> Unit,
 ) {
-    var textState by remember { mutableStateOf(entryText ?: "") }
+    val keyboard = LocalSoftwareKeyboardController.current
+    val focusManager = LocalFocusManager.current
     OutlinedTextField(
-        value = if (enabled) textState else Utils.getLocalDateAndTime(),
+        value = if (enabled) text else UtilsNotebook.getLocalDateAndTime(),
         onValueChange = {
-            textState = it
-            onTextChange(textState)
+            onTextChange(it)
         },
         label = {
             Text(
@@ -64,10 +74,20 @@ fun OutlinedTextFielCustom(
         },
         modifier = modifier,
         textStyle = styleText,
-        colors = colorsTextField(textState == ""),
+        colors = colorsTextField(text == ""),
         enabled = enabled,
-        isError = isError
-    )
+        isError = isError,
+        keyboardActions = KeyboardActions(onDone = { keyboard?.hide() },
+            onNext = { focusManager.moveFocus(FocusDirection.Next) }),
+        singleLine = isSingleLine,
+        keyboardOptions = KeyboardOptions(
+            keyboardType = keyboardOptions?.keyboardType ?: KeyboardType.Text,
+            capitalization = keyboardOptions?.capitalization
+                ?: KeyboardCapitalization.Sentences,
+            imeAction = if (keyboardOptions == null || keyboardOptions.imeAction == ImeAction.Default)
+                ImeAction.Next else keyboardOptions.imeAction
+        ),
+        )
     AnimatedVisibility(
         visible = isError,
         enter = slideInVertically(),

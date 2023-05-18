@@ -2,14 +2,19 @@
 <resources>
     <string name="app_name">Notebook</string>
 
+    <string name="menu_option_rename">Renombrar</string>
+    <string name="menu_option_delete">Eliminar</string>
     <string name="message_create_note">Creando la nota</string>
     <string name="message_update_note">Editando la nota</string>
+    <string name="menu_option_rate_app">Calificar la aplicación</string>
     <string name="message_fill_fields">Rellena todos los campos</string>
     <string name="message_note_not_found">No pude encontrar la nota.</string>
+    <string name="message_fill_all_the_fields">Rellena todos los campos</string>
     <string name="message_not_found">No tienes notas creadas para esta carpeta</string>
     <string name="message_all_notes">Tome notas y acceda fácilmente a ellas en esta sección.</string>
     <string name="message_folders">Cree nuevas carpetas y organice sus notas de manera más efectiva.</string>
     <string name="message_create_folder">Por favor, ingresa el nombre de la carpeta que deseas crear:</string>
+    <string name="message_update_folder">Por favor, ingresa el nombre de la carpeta que deseas actualizar:</string>
 
     <string name="tab_all_notes">Notas</string>
     <string name="tab_folders">Carpetas</string>
@@ -18,6 +23,7 @@
     <string name="title_edit_note">Editar Nota</string>
     <string name="title_create_note">Crear Nota</string>
     <string name="title_create_folder">Crear Carpeta</string>
+    <string name="title_update_folder">Actualizar Carpeta</string>
 
     <string name="add_new_note">Añade una nota</string>
     <string name="add_new_folder">Añade una carpeta</string>
@@ -25,6 +31,7 @@
     <string name="created_by">Creada por</string>
     <string name="last_modified">Ultima modificación</string>
     <string name="tags">Tags</string>
+    <string name="update_note">Actualizar</string>
 
     <string name="label_folder_name">Nombre de la carpeta</string>
     <string name="label_select_folder">Seleccione una carpeta para guardar</string>
@@ -34,6 +41,7 @@
 
     <string name="btn_create">Crear</string>
     <string name="btn_dismiss">Cerrar</string>
+    <string name="btn_update">Actualizar</string>
     <string name="btn_continue">Continuar</string>
     <string name="btn_get_started">Empezar</string>
     <string name="btn_skip_now">Saltar ahora</string>
@@ -45,11 +53,14 @@
     <string name="default_folder_personal">Personal</string>
     <string name="default_folder_quick_notes">Notas Rapidas</string>
 
-    <string name="new_function_create_folders_v1100">Ahora podemos crear carpetas</string>
-    <string name="new_function_description_create_folders_v1100">Con la finalidad de brindarle al usuario una mayor facilidad para organizar sus notas de una mejor manera, hemos añadido la opción de crear, eliminar y actualizar carpetas.</string>
+    <string name="new_function_modify_folders_v1200">Renombrar carpetas</string>
+    <string name="new_function_description_modify_folders_v1200">Se ha incorporado una funcionalidad adicional que permite la modificación del nombre de una carpeta preexistente.</string>
+    <string name="new_function_delete_folders_v1200">Eliminar carpetas</string>
+    <string name="new_function_description_delete_folders_v1200">Se ha implementado una opción que permite la eliminación de carpetas, siempre y cuando no contengan notas en su interior.</string>
 
+    <string name="modal_title_news">¡Novedades!</string>
     <string name="update_bugs">Corrección de bugs y mejoras de la estabilidad</string>
-    <string name="update_bugs_description">Si tienes alguna duda o consulta, contacta con nosotros sin compromiso via email o redes sociales.</string>
+    <string name="update_bugs_description">Si tienes alguna duda o consulta, contacta con nosotros sin compromiso vía email o redes sociales.</string>
     <string name="update_feedback">¿Tienes feedback o sugerencias?</string>
-    <string name="update_feedback_description">Recuerda que estamos a un toque para lo que necesites. Si tienes alguna duda o sugerencia puedes contactarnos via redes sociales o correo electrónico.</string>
+    <string name="update_feedback_description">Recuerda que estamos a un toque para lo que necesites. Si tienes alguna duda o sugerencia puedes contactarnos vía redes sociales o correo electrónico.</string>
 </resources>

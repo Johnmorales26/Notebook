@@ -8,6 +8,6 @@ import androidx.room.PrimaryKey
 data class FolderEntity(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
-    val name: String,
-    val icon: Int
+    var name: String,
+    var icon: Int
 )

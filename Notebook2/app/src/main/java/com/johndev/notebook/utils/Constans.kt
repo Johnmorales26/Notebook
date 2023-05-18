@@ -1,4 +1,4 @@
-package com.johndev.notebook.data
+package com.johndev.notebook.utils
 
 object Constans {
 

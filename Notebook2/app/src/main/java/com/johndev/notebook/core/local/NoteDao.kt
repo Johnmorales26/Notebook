@@ -1,4 +1,4 @@
-package com.johndev.notebook.data
+package com.johndev.notebook.core.local
 
 import androidx.room.Dao
 import androidx.room.Delete
@@ -17,8 +17,11 @@ interface NoteDao {
     @Query("SELECT * FROM NoteEntity WHERE title = :title")
     fun findByName(title: String): Flow<List<NoteEntity>>
 
+    @Query("SELECT * FROM NoteEntity WHERE title LIKE :title")
+    fun findNotesByName(title: String): Flow<List<NoteEntity>>
+
     @Query("SELECT * FROM NoteEntity WHERE folder = :folder")
-    fun findByFolder(folder: String): Flow<List<NoteEntity>>
+    fun findNotesByFolder(folder: String): Flow<List<NoteEntity>>
 
     @Query("SELECT * FROM NoteEntity WHERE id = :id")
     fun findById(id: Int): Flow<NoteEntity?>

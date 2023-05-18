@@ -4,11 +4,11 @@ import android.annotation.SuppressLint
 import android.os.Build
 import android.widget.Toast
 import androidx.annotation.RequiresApi
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -19,33 +19,38 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.johndev.notebook.R
-import com.johndev.notebook.data.ViewModels
 import com.johndev.notebook.entities.FolderEntity
 import com.johndev.notebook.entities.NoteEntity
 import com.johndev.notebook.ui.components.OutlinedTextFielCustom
 import com.johndev.notebook.ui.components.SpinnerFolders
+import com.johndev.notebook.ui.createNoteModule.ui.CreateScreen
+import com.johndev.notebook.ui.createNoteModule.ui.NotesViewModel
 
-@RequiresApi(Build.VERSION_CODES.O)
+/*@RequiresApi(Build.VERSION_CODES.O)
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun DetailsNoteScreen(navigationController: NavHostController, idNote: Int) {
-    val notesState: NoteEntity? by ViewModels.getInstanceNotesVM().findById(idNote).collectAsState(
+fun DetailsNoteScreen(
+    navigationController: NavHostController,
+    idNote: Int,
+    notesViewModel: NotesViewModel
+) {
+    val notesState: NoteEntity? by notesViewModel.findNoteById(idNote).collectAsState(
         initial = null
     )
     val context = LocalContext.current
     if (notesState != null) {
-        CreateScreen(navigationController = navigationController, notesState)
+        CreateScreen(navigationController = navigationController, notesState, notesViewModel)
     } else {
         Toast.makeText(context, stringResource(R.string.message_note_not_found), Toast.LENGTH_SHORT)
             .show()
     }
-}
+}*/
 
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
@@ -79,11 +84,13 @@ fun FormData(
             }
         } else {
             OutlinedTextFielCustom(
+                text = entryText,
                 textRes = stringResource(id = indicationRes),
                 styleText = MaterialTheme.typography.body1,
                 modifier = Modifier.weight(2f),
                 enabled = isEnabled,
-                entryText = entryText
+                entryText = entryText,
+                keyboardOptions = KeyboardOptions(capitalization = KeyboardCapitalization.Words),
             ) {
                 textState = it
                 onValueChange(textState)

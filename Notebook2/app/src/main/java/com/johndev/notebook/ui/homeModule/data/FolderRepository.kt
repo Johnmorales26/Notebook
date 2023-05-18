@@ -1,10 +1,11 @@
-package com.johndev.notebook.ui.FolderEntitysModule
+package com.johndev.notebook.ui.homeModule.data
 
-import com.johndev.notebook.data.FolderDao
-import com.johndev.notebook.data.NotesApplication
+import com.johndev.notebook.core.local.FolderDao
+import com.johndev.notebook.NotesApplication
 import com.johndev.notebook.entities.FolderEntity
+import javax.inject.Inject
 
-class FolderRepository {
+class FolderRepository @Inject constructor() {
 
     private val dao: FolderDao by lazy { NotesApplication.database.folderDao() }
 

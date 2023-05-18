@@ -1,4 +1,4 @@
-package com.johndev.notebook.data
+package com.johndev.notebook.utils
 
 import android.content.Context
 import android.os.Build
@@ -14,13 +14,11 @@ import com.johndev.notebook.ui.theme.PrimaryDarkColor
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
-object Utils {
+object UtilsNotebook {
 
     @Composable
     fun isLightTheme(): Boolean {
-        // Obtiene el valor del tema actual utilizando isSystemInDarkTheme
         val isSystemDarkTheme = isSystemInDarkTheme()
-        // Invierte el valor obtenido para determinar si es un tema claro (light) o no
         return !isSystemDarkTheme
     }
 

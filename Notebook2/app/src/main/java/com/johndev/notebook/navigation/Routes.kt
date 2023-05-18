@@ -11,10 +11,9 @@ sealed class Routes(val route: String) {
     }
 
     object CreateNoteScreen : Routes("CreateNoteScreen")
-    object CreateFolderScreen : Routes("CreateFolderScreen")
-
-    object DetailsNoteScreen : Routes("DetailsNoteScreen/{idNote}") {
-        fun createRoute(idNote: Int) = "DetailsNoteScreen/$idNote"
+    object EditNoteScreen : Routes("EditNoteScreen/{idNote}") {
+        fun createRoute(idNote: Int) = "EditNoteScreen/$idNote"
     }
+    object SearchScreen : Routes("SearchScreen")
 
 }
