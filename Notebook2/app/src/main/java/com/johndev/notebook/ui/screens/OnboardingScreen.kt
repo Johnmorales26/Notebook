@@ -11,7 +11,7 @@ import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.rememberPagerState
 import com.johndev.notebook.utils.UtilsNotebook
 import com.johndev.notebook.ui.components.OnBoardingPager
-import com.johndev.notebook.ui.homeModule.ui.HomeViewModel
+import com.johndev.notebook.ui.homeModule.viewModel.HomeViewModel
 
 @OptIn(ExperimentalPagerApi::class)
 @Composable

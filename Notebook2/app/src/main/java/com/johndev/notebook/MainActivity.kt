@@ -19,16 +19,16 @@ import androidx.navigation.navArgument
 import androidx.preference.PreferenceManager
 import com.johndev.notebook.navigation.Routes
 import com.johndev.notebook.ui.Onboarding.OnboargingScreen
-import com.johndev.notebook.ui.folderModule.ui.FolderScreen
-import com.johndev.notebook.ui.folderModule.ui.FolderViewModel
-import com.johndev.notebook.ui.homeModule.ui.HomeViewModel
-import com.johndev.notebook.ui.createNoteModule.ui.CreateScreen
-import com.johndev.notebook.ui.homeModule.ui.UpdateHomeModalBottomSheet
-import com.johndev.notebook.ui.createNoteModule.ui.NotesViewModel
-import com.johndev.notebook.ui.editNoteModule.ui.EditNoteScreen
-import com.johndev.notebook.ui.editNoteModule.ui.EditNotesViewModel
-import com.johndev.notebook.ui.searchModule.ui.SearchScreen
-import com.johndev.notebook.ui.searchModule.ui.SearchViewModel
+import com.johndev.notebook.ui.folderModule.view.FolderScreen
+import com.johndev.notebook.ui.folderModule.viewModel.FolderViewModel
+import com.johndev.notebook.ui.homeModule.viewModel.HomeViewModel
+import com.johndev.notebook.ui.createNoteModule.view.CreateScreen
+import com.johndev.notebook.ui.homeModule.view.UpdateHomeModalBottomSheet
+import com.johndev.notebook.ui.createNoteModule.viewModel.CreateViewModel
+import com.johndev.notebook.ui.editNoteModule.view.EditNoteScreen
+import com.johndev.notebook.ui.editNoteModule.viewModel.EditNotesViewModel
+import com.johndev.notebook.ui.searchModule.view.SearchScreen
+import com.johndev.notebook.ui.searchModule.viewModel.SearchViewModel
 import com.johndev.notebook.ui.theme.NotebookTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -37,7 +37,7 @@ class MainActivity : ComponentActivity() {
 
     private lateinit var sharedPreferences: SharedPreferences
     private val homeViewModel: HomeViewModel by viewModels()
-    private val notesViewModel: NotesViewModel by viewModels()
+    private val notesViewModel: CreateViewModel by viewModels()
     private val folderViewModel: FolderViewModel by viewModels()
     private val searchViewModel: SearchViewModel by viewModels()
     private val editNotesViewModel: EditNotesViewModel by viewModels()
@@ -84,10 +84,10 @@ class MainActivity : ComponentActivity() {
                             arguments = listOf(navArgument("filter") {
                                 type = NavType.StringType
                             })
-                        ) { backStaclEntry ->
+                        ) { backStackEntry ->
                             FolderScreen(
                                 navigationController = navigationController,
-                                folder = backStaclEntry.arguments?.getString("filter") ?: "",
+                                folder = backStackEntry.arguments?.getString("filter") ?: "",
                                 notesViewModel = notesViewModel,
                                 folderViewModel = folderViewModel
                             )
@@ -97,10 +97,10 @@ class MainActivity : ComponentActivity() {
                             arguments = listOf(navArgument("idNote") {
                                 type = NavType.IntType
                             })
-                        ) { backStaclEntry ->
+                        ) { backStackEntry ->
                             EditNoteScreen(
                                 navigationController = navigationController,
-                                idNote = backStaclEntry.arguments?.getInt("idNote") ?: 0,
+                                idNote = backStackEntry.arguments?.getInt("idNote") ?: 0,
                                 editNotesViewModel = editNotesViewModel
                             )
                         }

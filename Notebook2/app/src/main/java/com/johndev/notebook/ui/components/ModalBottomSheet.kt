@@ -25,7 +25,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.johndev.notebook.R
 import com.johndev.notebook.utils.UtilsNotebook
-import com.johndev.notebook.ui.homeModule.ui.HomeViewModel
+import com.johndev.notebook.ui.homeModule.viewModel.HomeViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 

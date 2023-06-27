@@ -62,5 +62,7 @@
     <string name="update_bugs_description">If you have any questions or queries, contact us without obligation via email or social networks.</string>
     <string name="update_feedback">Do you have feedback or suggestions?</string>
     <string name="update_feedback_description">Remember that we are one touch away for whatever you need. If you have any questions or suggestions you can contact us via social networks or email.</string>
+    <string name="create_note_success">Note created successfully</string>
+    <string name="create_note_error">Error creating note</string>
 
 </resources>

@@ -27,7 +27,7 @@ interface NoteDao {
     fun findById(id: Int): Flow<NoteEntity?>
 
     @Insert
-    fun insert(noteEntity: NoteEntity)
+    fun insert(noteEntity: NoteEntity): Long
 
     @Delete
     fun delete(noteEntity: NoteEntity)

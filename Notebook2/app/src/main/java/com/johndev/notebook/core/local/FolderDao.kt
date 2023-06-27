@@ -18,7 +18,7 @@ interface FolderDao {
     fun getByName(name: String): FolderEntity?
 
     @Insert
-    fun insert(folderEntity: FolderEntity)
+    fun insert(folderEntity: FolderEntity): Long
 
     @Delete
     fun delete(folderEntity: FolderEntity)
