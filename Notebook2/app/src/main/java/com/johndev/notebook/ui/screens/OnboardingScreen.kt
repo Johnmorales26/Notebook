@@ -12,8 +12,9 @@ import com.google.accompanist.pager.rememberPagerState
 import com.johndev.notebook.utils.UtilsNotebook
 import com.johndev.notebook.ui.components.OnBoardingPager
 import com.johndev.notebook.ui.homeModule.viewModel.HomeViewModel
+import kotlinx.coroutines.DelicateCoroutinesApi
 
-@OptIn(ExperimentalPagerApi::class)
+@OptIn(ExperimentalPagerApi::class, DelicateCoroutinesApi::class)
 @Composable
 fun OnboargingScreen(
     navigationController: NavHostController,

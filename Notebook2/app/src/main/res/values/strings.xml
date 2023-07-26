@@ -19,6 +19,7 @@
     <string name="tab_folders">Folders</string>
 
     <string name="title_folder">Folder</string>
+    <string name="title_date">Date</string>
     <string name="title_edit_note">Edit Note</string>
     <string name="title_create_note">Create Note</string>
     <string name="title_create_folder">Create Folder</string>
@@ -37,6 +38,7 @@
     <string name="label_write_title">Write the title of the note</string>
     <string name="label_write_content">Write the content of the note</string>
     <string name="label_write_name_author">Write the name of the author</string>
+    <string name="label_current_date">Current date</string>
 
     <string name="btn_create">Create</string>
     <string name="btn_update">Update</string>

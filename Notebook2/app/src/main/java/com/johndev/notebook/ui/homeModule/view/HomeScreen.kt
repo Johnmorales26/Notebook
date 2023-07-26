@@ -93,7 +93,10 @@ fun HomeScreen(
     homeViewModel: HomeViewModel,
     notesViewModel: CreateViewModel
 ) {
-    navigationController.clearBackStack(Routes.OnboardingScreen.route)
+    homeViewModel.run {
+        getAllNotes()
+        getAllFolders()
+    }
     val state: Int by homeViewModel.stateTabs.observeAsState(initial = 0)
     val openDialog: Boolean by homeViewModel.openDialog.observeAsState(initial = false)
     Scaffold(

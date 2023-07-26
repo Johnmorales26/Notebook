@@ -16,6 +16,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.text.SimpleDateFormat
+import java.util.Date
 import javax.inject.Inject
 
 @HiltViewModel
@@ -38,6 +40,9 @@ class EditNotesViewModel @Inject constructor(
 
     private val _createdBy = MutableLiveData<String>()
     val createdBy: LiveData<String> = _createdBy
+
+    private val _date = MutableLiveData<String>()
+    val date: LiveData<String> = _date
 
     private val _folder = MutableLiveData<String>()
     val folder: LiveData<String> = _folder
@@ -90,13 +95,15 @@ class EditNotesViewModel @Inject constructor(
         title: String,
         contentState: String,
         createdByState: String,
-        folderState: String
+        folderState: String,
+        dateState: String
     ) {
         _title.value = title
         _content.value = contentState
         _createdBy.value = createdByState
         _folder.value = folderState
         _isSaveEnable.value = enableOptionSave()
+        _date.value = dateState
     }
 
     fun onSearchNote(idNote: Int) {
@@ -108,6 +115,7 @@ class EditNotesViewModel @Inject constructor(
                     _title.value = it.title
                     _content.value = it.content
                     _createdBy.value = it.createdBy
+                    _date.value = it.date
                     _folder.value = it.folder
                 }
             }
@@ -123,8 +131,17 @@ class EditNotesViewModel @Inject constructor(
             it.tags = ""
             it.folder = _folder.value!!
             it.content = _content.value!!
+            it.date = getCurrentDate()
             updateNote(it)
         }
+    }
+
+    private fun getCurrentDate(): String {
+        val currentTimeMillis = System.currentTimeMillis()
+        val date = Date(currentTimeMillis)
+        val sdf = SimpleDateFormat("dd-MM-yyyy HH:mm:ss")
+        val formattedTime: String = sdf.format(date)
+        return formattedTime
     }
 
 }

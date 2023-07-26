@@ -46,7 +46,6 @@ fun CreateScreen(
     navigationController: NavHostController,
     notesViewModel: CreateViewModel
 ) {
-    navigationController.clearBackStack(Routes.HomeScreen.route)
     Scaffold(
         topBar = {
             Header(
@@ -84,23 +83,24 @@ fun Footer(
     ) {
         if (isSaveEnable) {
             notesViewModel.saveNote()
-            msg?.let {
-                Toast.makeText(context, context.getString(msg!!), Toast.LENGTH_SHORT).show()
-                navigationController.clearBackStack(Routes.CreateNoteScreen.route)
-                navigationController.navigate(Routes.HomeScreen.route)
-            }
         } else {
             Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
         }
+    }
+    msg?.let {
+        Toast.makeText(context, context.getString(msg!!), Toast.LENGTH_SHORT).show()
+        navigationController.popBackStack()
     }
 }
 
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun Body(notesViewModel: CreateViewModel) {
+    notesViewModel.getCurrentDate()
     val titleState: String by notesViewModel.title.observeAsState(initial = "")
     val contentState: String by notesViewModel.content.observeAsState(initial = "")
     val createdByState: String by notesViewModel.createdBy.observeAsState(initial = "")
+    val dateState: String by notesViewModel.dateCurrent.observeAsState(initial = "")
     val folderState: String by notesViewModel.folder.observeAsState(initial = "")
     val foldersList: List<FolderEntity> by notesViewModel.allFolders.observeAsState(initial = emptyList())
     Column(
@@ -128,6 +128,14 @@ fun Body(notesViewModel: CreateViewModel) {
             notesViewModel.onNoteChanged(titleState, contentState, it, folderState)
         }
         FormData(
+            categoryRes = R.string.title_date,
+            indicationRes = R.string.label_current_date,
+            entryText = dateState,
+            isEnabled = false
+        ) {
+            notesViewModel.onNoteChanged(titleState, contentState, it, folderState)
+        }
+        FormData(
             categoryRes = R.string.title_folder,
             indicationRes = R.string.label_write_name_author,
             isEnabled = false,
@@ -144,8 +152,7 @@ fun Body(notesViewModel: CreateViewModel) {
             textRes = stringResource(R.string.label_write_content),
             styleText = MaterialTheme.typography.body1,
             modifier = Modifier
-                .fillMaxWidth()
-                .weight(1f),
+                .fillMaxWidth(),
             entryText = contentState,
             isSingleLine = false,
             keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done)
@@ -168,10 +175,7 @@ fun Header(
         title = { Text(text = stringResource(id = R.string.title_create_note)) },
         navigationIcon = {
             IconButton(onClick = {
-                navigationController.let {
-                    it.navigate(Routes.HomeScreen.route)
-                    it.clearBackStack(Routes.CreateNoteScreen.route)
-                }
+                navigationController.popBackStack()
             }) {
                 Icon(
                     painter = painterResource(id = R.drawable.ic_arrow_back),

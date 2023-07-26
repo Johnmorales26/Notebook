@@ -4,9 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
-import android.util.Log
 import androidx.annotation.RequiresApi
-import androidx.compose.runtime.MutableState
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -21,6 +19,8 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
+import java.util.Date
 import javax.inject.Inject
 
 @HiltViewModel
@@ -41,6 +41,9 @@ class CreateViewModel @Inject constructor(
 
     private val _createdBy = MutableLiveData<String>()
     val createdBy: LiveData<String> = _createdBy
+
+    private val _dateCurrent = MutableLiveData<String>()
+    val dateCurrent: LiveData<String> = _dateCurrent
 
     private val _folder = MutableLiveData<String>()
     val folder: LiveData<String> = _folder
@@ -89,7 +92,8 @@ class CreateViewModel @Inject constructor(
             lastModified = UtilsNotebook.getLocalDateAndTime(),
             tags = "",
             folder = _folder.value!!,
-            content = _content.value!!
+            content = _content.value!!,
+            date = _dateCurrent.value!!
         )
         insertNote(note)
     }
@@ -111,6 +115,17 @@ class CreateViewModel @Inject constructor(
             flags = Intent.FLAG_ACTIVITY_NEW_TASK
         }
         context.startActivity(intent)
+    }
+
+    fun getCurrentDate() {
+        val currentTimeMillis = System.currentTimeMillis()
+        // Crear un objeto Date usando el valor de currentTimeMillis
+        val date = Date(currentTimeMillis)
+        // Definir el formato deseado para la fecha y hora
+        val sdf = SimpleDateFormat("dd-MM-yyyy HH:mm:ss")
+        // Aplicar el formato y obtener la representación en formato de cadena
+        val formattedTime: String = sdf.format(date)
+        _dateCurrent.value = formattedTime
     }
 
 }

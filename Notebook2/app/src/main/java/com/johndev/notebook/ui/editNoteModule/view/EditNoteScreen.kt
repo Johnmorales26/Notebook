@@ -92,6 +92,7 @@ fun Body(editNotesViewModel: EditNotesViewModel) {
     val titleState: String by editNotesViewModel.title.observeAsState(initial = "")
     val contentState: String by editNotesViewModel.content.observeAsState(initial = "")
     val createdByState: String by editNotesViewModel.createdBy.observeAsState(initial = "")
+    val dateState: String by editNotesViewModel.date.observeAsState(initial = "")
     val folderState: String by editNotesViewModel.folder.observeAsState(initial = "")
     val foldersList: List<FolderEntity> by editNotesViewModel.allFolders.observeAsState(initial = emptyList())
     Column(
@@ -109,14 +110,22 @@ fun Body(editNotesViewModel: EditNotesViewModel) {
             keyboardOptions = KeyboardOptions(capitalization = KeyboardCapitalization.Words),
         )
         {
-            editNotesViewModel.onNoteChanged(it, contentState, createdByState, folderState)
+            editNotesViewModel.onNoteChanged(it, contentState, createdByState, folderState, dateState)
         }
         FormData(
             categoryRes = R.string.created_by,
             indicationRes = R.string.label_write_name_author,
             entryText = createdByState
         ) {
-            editNotesViewModel.onNoteChanged(titleState, contentState, it, folderState)
+            editNotesViewModel.onNoteChanged(titleState, contentState, it, folderState, dateState)
+        }
+        FormData(
+            categoryRes = R.string.title_date,
+            indicationRes = R.string.label_current_date,
+            entryText = dateState,
+            isEnabled = false
+        ) {
+            editNotesViewModel.onNoteChanged(titleState, contentState, createdByState, folderState, dateState)
         }
         FormData(
             categoryRes = R.string.title_folder,
@@ -127,7 +136,7 @@ fun Body(editNotesViewModel: EditNotesViewModel) {
             entryText = folderState
         )
         {
-            editNotesViewModel.onNoteChanged(titleState, contentState, createdByState, it)
+            editNotesViewModel.onNoteChanged(titleState, contentState, createdByState, it, dateState)
         }
         Divider(color = UtilsNotebook.getColorDividerByTheme().copy(alpha = 0.1f))
         OutlinedTextFielCustom(
@@ -141,7 +150,7 @@ fun Body(editNotesViewModel: EditNotesViewModel) {
             keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done)
         )
         {
-            editNotesViewModel.onNoteChanged(titleState, it, createdByState, folderState)
+            editNotesViewModel.onNoteChanged(titleState, it, createdByState, folderState, dateState)
         }
     }
 }
@@ -160,8 +169,7 @@ fun Header(
         navigationIcon = {
             IconButton(onClick = {
                 navigationController.let {
-                    it.navigate(Routes.HomeScreen.route)
-                    it.clearBackStack(Routes.EditNoteScreen.route)
+                    it.popBackStack()
                 }
             }) {
                 Icon(

@@ -13,5 +13,6 @@ data class NoteEntity(
     var lastModified: String,
     var tags: String,
     var folder: String,
-    var content: String
+    var content: String,
+    var date: String,
 )

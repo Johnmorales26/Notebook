@@ -25,11 +25,6 @@ class HomeViewModel @Inject constructor(
     private val homeRepository: HomeRepository
 ) : ViewModel() {
 
-    init {
-        getAllNotes()
-        getAllFolders()
-    }
-
     private val _folderName = MutableLiveData<String>()
     val folderName: LiveData<String> = _folderName
 
@@ -51,7 +46,7 @@ class HomeViewModel @Inject constructor(
     private val _msg = MutableLiveData<Int?>()
     val msg: LiveData<Int?> = _msg
 
-    private fun getAllNotes() {
+    fun getAllNotes() {
         homeRepository.getAllNotes {
             viewModelScope.launch {
                 it.collect {
@@ -61,7 +56,7 @@ class HomeViewModel @Inject constructor(
         }
     }
 
-    private fun getAllFolders() {
+    fun getAllFolders() {
         homeRepository.getAllFolders {
             viewModelScope.launch {
                 it.collect {
