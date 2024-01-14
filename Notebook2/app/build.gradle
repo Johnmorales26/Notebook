@@ -7,14 +7,14 @@ plugins {
 
 android {
     namespace "com.johndev.notebook"
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         applicationId "com.johndev.notebook"
         minSdk 21
-        targetSdk 33
-        versionCode 9
-        versionName "1.3.0.0"
+        targetSdk 34
+        versionCode 10
+        versionName "1.3.0.1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
             useSupportLibrary true
@@ -48,12 +48,12 @@ android {
 
 dependencies {
 
-    implementation "androidx.core:core-ktx:1.10.1"
-    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.6.1"
-    implementation "androidx.activity:activity-compose:1.7.2"
+    implementation "androidx.core:core-ktx:1.12.0"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.6.2"
+    implementation "androidx.activity:activity-compose:1.8.2"
     implementation "androidx.compose.ui:ui:$compose_ui_version"
     implementation "androidx.compose.ui:ui-tooling-preview:$compose_ui_version"
-    implementation "androidx.compose.material:material:1.4.3"
+    implementation "androidx.compose.material:material:1.5.4"
     testImplementation "junit:junit:4.13.2"
     androidTestImplementation "androidx.test.ext:junit:1.1.5"
     androidTestImplementation "androidx.test.espresso:espresso-core:3.5.1"
@@ -61,34 +61,34 @@ dependencies {
     debugImplementation "androidx.compose.ui:ui-tooling:$compose_ui_version"
     debugImplementation "androidx.compose.ui:ui-test-manifest:$compose_ui_version"
     //Coroutines
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4"
-    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.6.1"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.6.2"
     //  Live Data
-    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.6.1"
-    implementation "androidx.compose.runtime:runtime-livedata:1.4.3"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.6.2"
+    implementation "androidx.compose.runtime:runtime-livedata:1.5.4"
     //  Coil
     implementation "io.coil-kt:coil-compose:2.3.0"
     //  Constraint Layout
     implementation "androidx.constraintlayout:constraintlayout-compose:1.0.1"
     //  Navigation
-    implementation "androidx.navigation:navigation-compose:2.6.0"
+    implementation "androidx.navigation:navigation-compose:2.7.6"
     //  Room 2.4.1
-    implementation "androidx.room:room-runtime:2.5.2"
-    kapt "androidx.room:room-compiler:2.5.2"
-    implementation "androidx.room:room-ktx:2.5.2"
+    implementation "androidx.room:room-runtime:2.6.1"
+    kapt "androidx.room:room-compiler:2.6.1"
+    implementation "androidx.room:room-ktx:2.6.1"
     //  Acompanist
     implementation "com.google.accompanist:accompanist-systemuicontroller:0.30.1"
     implementation "com.google.accompanist:accompanist-pager:0.27.0"
     //  Shared Preferences
-    implementation "androidx.preference:preference-ktx:1.2.0"
+    implementation "androidx.preference:preference-ktx:1.2.1"
     //  Constraint Layout
     implementation "androidx.constraintlayout:constraintlayout-compose:1.0.1"
     //  Admob
     //implementation "com.google.android.gms:play-services-ads:20.3.0"
     //  Dagger Hilt
-    implementation "com.google.dagger:hilt-android:2.45"
-    kapt "com.google.dagger:hilt-android-compiler:2.45"
-    implementation "androidx.hilt:hilt-navigation-compose:1.0.0"
+    implementation "com.google.dagger:hilt-android:2.48"
+    kapt "com.google.dagger:hilt-android-compiler:2.48"
+    implementation "androidx.hilt:hilt-navigation-compose:1.1.0"
 
 }
 
